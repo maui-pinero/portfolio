@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa:400,500,700&display=swap">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 10px;
+      font-family: 'Comfortaa';
+      scroll-behavior: smooth;
+    }
+
+    a {
+  text-decoration: none;
+}
+
+.container {
+  min-height: 30vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+p {
+  color: #262220;
+  font-size: 1.4rem;
+  margin-top: 5px;
+  line-height: 2.5rem;
+  font-weight: 300;
+  letter-spacing: 0.05rem;
+}
+
+.section-title {
+  font-size: 4rem;
+  font-weight: 300;
+  color: #262220;
+  margin-bottom: 10px;
+  text-transform: none;
+  letter-spacing: 0.2rem;
+  text-align: center;
+}
+
+.section-title span {
+  color: #dd8ea4;
+}
+
+.cta {
+  display: inline-block;
+  padding: 10px 30px;
+  color: #ffffff;
+  background-color: #dd8ea4;
+  border: 2px solid #dd8ea4;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-top: 30px;
+  transition: 0.3s ease;
+  transition-property: background-color, color;
+}
+
+.cta:hover {
+  color: white;
+  background-color: #f2e9eb;
+}
+
+.brand h1 {
+  font-size: 3rem;
+  text-transform: normal;
+  color: #262220;
+}
+
+.brand h1 span {
+  color: #dd8ea4;
+}
+
+/* Header section */
+#header {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: auto;
+}
+
+#header .header {
+  min-height: 8vh;
+  background-color: #f7f1f0;
+  transition: 0.3s ease background-color;
+}
+
+#header .nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  max-width: 1300px;
+  padding: 0 10px;
+}
+
+#header .nav-list ul {
+  list-style: none;
+  position: absolute;
+  background-color: #f7f1f0;
+  width: 100vw;
+  height: 100vh;
+  left: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  overflow-x: hidden;
+  transition: 0.5s ease left;
+}
+
+#header .nav-list ul.active {
+  left: 0%;
+}
+
+#header .nav-list ul a {
+  font-size: 2.5rem;
+  font-weight: 500;
+  letter-spacing: 0.2rem;
+  text-decoration: none;
+  color: #262220;
+  text-transform: uppercase;
+  padding: 20px;
+  display: block;
+}
+
+#header .nav-list ul a::after {
+  content: attr(data-after);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  color: #f0f8ff05;
+  font-size: 13rem;
+  letter-spacing: 50px;
+  z-index: -1;
+  transition: 0.3s ease letter-spacing;
+}
+
+#header .nav-list ul li:hover a::after {
+  transform: translate(-50%, -50%) scale(1);
+  letter-spacing: initial;
+}
+
+#header .nav-list ul li:hover a {
+  color: #dd8ea4;
+}
+
+#header .hamburger {
+  height: 60px;
+  width: 60px;
+  display: inline-block;
+  border: 3px solid #dd8ea4;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  cursor: pointer;
+  transform: scale(0.8);
+  margin-right: 20px;
+}
+
+#header .hamburger:after {
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border: 3px solid #dd8ea4;
+  animation: hamburger_puls 1s ease infinite;
+}
+
+#header .hamburger .bar {
+  height: 2px;
+  width: 30px;
+  position: relative;
+  background-color: #dd8ea4;
+  z-index: -1;
+}
+
+#header .hamburger .bar::after,
+#header .hamburger .bar::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  background-color: #dd8ea4;
+  transition: 0.3s ease;
+  transition-property: top, bottom;
+}
+
+#header .hamburger .bar::after {
+  top: 8px;
+}
+
+#header .hamburger .bar::before {
+  bottom: 8px;
+}
+
+#header .hamburger.active .bar::before {
+  bottom: 0;
+}
+
+#header .hamburger.active .bar::after {
+  top: 0;
+}
+
+/* End Header section */
+
+/* About Section */
+#about .about {
+  flex-direction: column;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 100px 20px;
+}
+
+#about .col-right .cta {
+  color: #ffffff;
+  margin-bottom: 50px;
+  padding: 10px 20px;
+  font-size: 2rem;
+}
+/* End About Section */
+
+
+/* Projects section */
+#projects .projects {
+  flex-direction: column;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 100px 0;
+}
+
+#projects .projects-header h1 {
+  margin-bottom: 50px;
+}
+
+#projects .all-projects {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#projects .project-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 80%;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+#projects .project-info {
+  padding: 30px;
+  flex-basis: 50%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #f7f1f0;
+  color: #262220;
+}
+
+#projects .project-info h1 {
+  font-size: 4rem;
+  font-weight: 500;
+}
+
+#projects .project-info h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+#projects .project-info p {
+  color: #262220;
+}
+
+#projects .project-img {
+  flex-basis: 50%;
+  height: 315px;
+  overflow: hidden;
+  position: relative;
+}
+
+#projects .project-img::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.7;
+}
+
+#projects .project-img img {
+  transition: 0.3s ease transform;
+}
+
+#projects .project-item:hover .project-img img {
+  transform: scale(1.1);
+}
+
+/* End Projects section */
+
+/* Footer */
+#footer {
+background-color: #f7f1f0;
+}
+#footer .footer {
+min-height: 200px;
+flex-direction: column;
+padding-top: 50px;
+padding-bottom: 10px;
+}
+#footer h2 {
+color: #262220;
+font-weight: 500;
+font-size: 1.8rem;
+letter-spacing: 0.1rem;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+#footer .social-icon {
+
+display: flex;
+margin-bottom: 30px;
+}
+#footer .social-item {
+height: 50px;
+width: 50px;
+margin: 0 5px;
+}
+#footer .social-item img {
+filter: grayscale(1);
+transition: 0.3s ease filter;
+}
+#footer .social-item:hover img {
+filter: grayscale(0);
+}
+#footer p {
+color: #262220;
+font-size: 1.3rem;
+}
+/* End Footer */
+
+/* Media Query For Mobile */
+@media only screen and (max-width: 767px) {
+  #projects .project-item {
+    flex-direction: column; /* Display description and image in a column */
+  }
+  #projects .project-item:nth-child(even) {
+    flex-direction: column-reverse; /* Adjust for even items */
+  }
+  #projects .all-projects .project-info,
+  #projects .all-projects .project-img {
+    width: 100%; /* Make image width full for mobile view */
+  }
+  #projects .project-item {
+    margin-bottom: 20px; /* Add margin between project items on mobile */
+  }
+}
+/* About */
+#about .about {
+flex-direction: row;
+}
+#about .col-left {
+width: 600px;
+height: 400px;
+padding-left: 60px;
+}
+#about .about .col-left .about-img::after {
+left: -45px;
+top: 34px;
+height: 98%;
+width: 98%;
+border: 10px solid #f2e9eb;
+}
+#about .col-right {
+text-align: left;
+padding: 30px;
+}
+#about .col-right h1 {
+text-align: left;
+}
+/* End About */
+/* End Media Query For Tablet */
+/* Media Query For Desktop */
+@media only screen and (min-width: 1200px) {
+/* header */
+#header .hamburger {
+display: none;
+}
+#header .nav-list ul {
+position: initial;
+display: block;
+height: auto;
+width: fit-content;
+background-color: transparent;
+
+}
+#header .nav-list ul li {
+display: inline-block;
+}
+#header .nav-list ul li a {
+font-size: 1.8rem;
+}
+#header .nav-list ul a:after {
+display: none;
+}
+/* End header */
+#services .service-bottom .service-item {
+flex-basis: 22%;
+margin: 1.5%;
+}
+  </style>
+  <title>Maui Pinero's Portfolio</title>
+</head>
+<body>
+
+<!-- Header -->
+<section id="header">
+  <div class="header container">
+    <div class="nav-bar">
+      <div class="brand">
+        <a href="#about">
+          <h1><span>Maui's Portfolio</span></h1>
+        </a>
+      </div>
+      <div class="nav-list">
+        <div class="hamburger">
+          <div class="bar"></div>
+        </div>
+        <ul>
+          <li><a href="#about" data-after="About">About</a></li>
+          <li><a href="#projects" data-after="Projects">Projects</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Header -->
+
+<!-- About Section -->
+<section id="about" class="py-5">
+  <div class="about container">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-12 ml-auto section-title text-center">
+          <span class="sub-title mb-2 d-block">About Me</span>
+          <p class="mb-4">
+            Hello! I'm Maui Pinero, a 2nd-year student at PHINMA University of Pangasinan. I am currently studying Bachelor of Science in Information Technology (BSIT).
+            <br><br>
+            As it hasn't been that long since I switched programs to BSIT, I only have a few projects under my belt. Despite this, I have already worked on creating websites and a mobile app during my academic journey. These experiences have honed my skills in collaborative problem-solving and ignited my passion for crafting user-friendly and aesthetically pleasing websites.
+            <br><br>
+            In the future, my goal is to pursue a career as a front-end developer, merging my technical expertise with a fervor for crafting captivating and user-friendly interfaces. Currently, I am immersed in Formosity (our 2nd-year 2nd-semester project), actively broadening my understanding and staying updated with the latest industry trends.
+            <br><br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End About Section -->
+
+
+<!-- Projects Section -->
+<section id="projects">
+<div class="projects container">
+<div class="projects-header">
+  <div class="col-lg-12 ml-auto section-title text-center">
+          <span class="sub-title mb-2 d-block">My Projects</span>
+</div>
+<div class="all-projects">
+<div class="project-item">
+<div class="project-info">
+<h1>Crochet Pattern</h1>
+<h2>Mobile App</h2>
+<p>Crochet Pattern is a mobile app developed for crochet enthusiasts.
+  Users can commission crochet makers to create crochet for them while
+  crochet experts can take commission requests from clients.</p>
+</div>
+<div class="project-img">
+<img src="crochet.png" alt="img">
+</div>
+</div>
+
+</div>
+</div>
+</section>
+<!-- End Projects Section -->
+
+<!-- Footer -->
+<section id="footer">
+<div class="footer container">
+<div class="brand">
+
+<div class="social-icon">
+<div class="social-item">
+<a href="https://www.linkedin.com/in/maui-pinero/"><img
+src="https://img.icons8.com/?size=80&id=108812&format=png" /></a>
+</div>
+<div class="social-item">
+<a href="https://github.com/maui-pinero"><img
+src="https://img.icons8.com/?size=80&id=118553&format=png" /></a>
+</div>
+</div>
+</div>
+</section>
+<!-- End Footer -->
+
+<script>
+  const hamburger = document.querySelector('.header .nav-bar .nav-list .hamburger');
+  const mobile_menu = document.querySelector('.header .nav-bar .nav-list ul');
+  const menu_item = document.querySelectorAll('.header .nav-bar .nav-list ul li a');
+  const header = document.querySelector('.header.container');
+  
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobile_menu.classList.toggle('active');
+  });
+  
+  document.addEventListener('scroll', () => {
+    var scroll_position = window.scrollY;
+    if (scroll_position > 250) {
+      header.style.backgroundColor = '#f7f1f0';
+    } else {
+      header.style.backgroundColor = '#f7f1f0';
+    }
+  });
+  
+  menu_item.forEach((item) => {
+    item.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobile_menu.classList.toggle('active');
+    });
+  });
+</script>
+
+</body>
+</html>
